@@ -1,0 +1,45 @@
+generated: '2026-08-04'
+method: searched
+source: registry searches of npm, PyPI, RubyGems, crates.io, Packagist, NuGet and GitHub (2026-08-04)
+result: none
+notes: >-
+  Luminous Computing publishes no client SDK, because it publishes no public API. It is a
+  silicon-photonics semiconductor company designing an optical AI supercomputer, not a software
+  vendor. Every registry query returned zero results or unrelated fuzzy matches on the string
+  "luminous" (a JS lightbox, a Rust graphics framework, a Python photometry library). No `SDKs`
+  pointer is wired in apis.yml and the sdk_count checks are correctly left unearned.
+packages: []
+registries_checked:
+- registry: npm
+  query: luminous computing / @luminous scope
+  result: >-
+    0 first-party packages; the @luminous scope does not exist (404). Top text matches are
+    luminous-lightbox (imgix image lightbox) and its @types package - unrelated.
+- registry: pypi
+  query: luminous, luminous-computing, lmns
+  result: >-
+    luminous-computing and lmns 404. A project named `luminous` (0.0.1) exists but is an
+    unrelated spectral-photometry library (irradiance, luminous flux/intensity) - not this
+    company.
+- registry: rubygems
+  query: luminous
+  result: 0 first-party results (luminate, lumin, rgb_utils - all unrelated)
+- registry: crates.io
+  query: luminous
+  result: >-
+    5 unrelated matches (luminous - distributed systems helpers; luminance/luminance-front -
+    graphics; luminal_rt; lumine)
+- registry: packagist
+  query: luminous
+  result: no first-party package
+- registry: nuget
+  query: luminous
+  result: no first-party package
+- registry: github
+  query: orgs/LuminousComputing
+  result: >-
+    Organization github.com/LuminousComputing exists (created 2018-04-03, matching the company's
+    founding year) but has 0 public repositories and no profile metadata - no name, blog,
+    description or public members. Ownership therefore cannot be confirmed from public data and
+    no `GitHubOrganization` pointer is wired. The `lmns` GitHub org is a different company
+    (Lumens, lumens.com.ar) and is not Luminous Computing.

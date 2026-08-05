@@ -1,0 +1,43 @@
+generated: '2026-08-04'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml hosts (probe-domain-security.py plus curl/dig verification)
+hosts:
+- host: lmns.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  3 08:12:14 2026 GMT
+  hsts: true
+  hsts_max_age: 15552000
+  http_status: 404
+  note: >-
+    Squarespace origin. The apex returns HTTP 404 with the Squarespace "Website Expired"
+    system page - the marketing-site subscription has lapsed. TLS and HSTS are still served
+    by the Squarespace edge.
+- host: luminous-co.squarespace.com
+  https: true
+  tls_version: TLSv1.3
+  hsts: false
+  hsts_max_age: 0
+  http_status: 200
+  note: >-
+    Squarespace platform address for the same site; still serves the Luminous marketing page.
+    Sends Strict-Transport-Security with max-age=0, i.e. HSTS explicitly disabled. This host is
+    Squarespace-controlled infrastructure rather than a Luminous-registered domain, so its
+    posture is not attributable to the company.
+domains:
+- domain: lmns.com
+  dnssec: true
+  caa: []
+  spf: true
+  spf_record: v=spf1 include:_spf.google.com ~all
+  dmarc: false
+  dmarc_policy: null
+  mx: google-workspace
+  note: >-
+    No CAA record and no _dmarc TXT record are published. DNS is hosted on Google Cloud DNS and
+    carries live Google Workspace MX plus Atlassian, Smartsheet and DocuSign domain-verification
+    TXT records, so the domain is actively operated even though the public website has expired.
+x-evidence:
+  fetched: '2026-08-04'
+  dns_method: dig +short A/NS/MX/TXT/CAA and dig +short TXT _dmarc.lmns.com
+  tls_method: TLS handshake on port 443 plus curl -sI for response headers

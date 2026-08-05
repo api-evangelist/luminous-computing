@@ -1,0 +1,132 @@
+generated: '2026-08-04'
+method: probed
+source: live probes of /.well-known/ and contract-discovery paths on every Luminous Computing host
+result: >-
+  none - no /.well-known/ document and no machine-readable API contract is published on any
+  Luminous Computing host. Luminous is a silicon-photonics semiconductor company with a
+  single-page Squarespace marketing site and no API host to probe. No WellKnown or SecurityTxt
+  pointer is wired in apis.yml, because nothing was found.
+hosts:
+- host: https://lmns.com
+  platform: Squarespace
+  note: >-
+    Company-owned domain. Every path (including the site root) returns HTTP 404 with the
+    Squarespace "Website Expired" system page, so the 404s below are a lapsed subscription
+    rather than a per-path miss.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /openapi.yaml
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /docs
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 404
+  - path: /sitemap.xml
+    status: 404
+- host: https://luminous-co.squarespace.com
+  platform: Squarespace
+  note: >-
+    Squarespace platform address for the same site; still serving (HTTP 200 on /luminous).
+    This is where the live surface was probed.
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    note: >-
+      Squarespace platform 404 with a JSON body, i.e. a genuine origin miss rather than the
+      site's HTML 404 page
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /openapi.yaml
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /docs
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /robots.txt
+    status: 200
+    note: >-
+      Squarespace-generated robots.txt. Disallows /api/ (the Squarespace platform's internal
+      endpoints, not a Luminous API) and allows /api/ui-extensions/. Carries the Squarespace
+      AI-crawler block list (GPTBot, ClaudeBot, anthropic-ai, CCBot, Google-Extended,
+      Bytespider, Amazonbot, Meta-ExternalAgent, cohere-ai and others).
+  - path: /sitemap.xml
+    status: 200
+    note: sitemap lists exactly one content URL - /luminous - plus the 404 page
+- host: https://www.luminouscomputing.com
+  note: >-
+    Historical domain. 301-redirects to https://lmns.com/, which then serves the expired-site
+    404. No independent surface.
+hosts_that_do_not_resolve:
+- api.lmns.com
+- docs.lmns.com
+- developer.lmns.com
+- dev.lmns.com
+- app.lmns.com
+- portal.lmns.com
+- mcp.lmns.com
+- status.lmns.com
+- blog.lmns.com
+- careers.lmns.com
+- api.luminouscomputing.com
+- docs.luminouscomputing.com
+- developer.luminouscomputing.com
+- app.luminouscomputing.com
+- portal.luminouscomputing.com
+- mcp.luminouscomputing.com
+- status.luminouscomputing.com
+contract_discovery:
+  openapi: >-
+    not found - /openapi.json, /openapi.yaml, /swagger.json, /api-docs and /docs all 404 on
+    every host, and no API host exists to probe at a host root
+  graphql: not applicable - no /graphql surface and no API host
+  mcp: not found - no hosted MCP server, no mcp. subdomain, no MCP mention in any public material
+  a2a_agent_card: >-
+    not found - both /.well-known/agent-card.json and the legacy /.well-known/agent.json return
+    404 on every host. No a2a/ artifact is written.
+  grpc_protobuf: >-
+    not found - the LuminousComputing GitHub organization exists (created 2018-04-03) but holds
+    zero public repositories, so no .proto or other contract is published there
+  conclusion: >-
+    Luminous Computing publishes no machine-readable API contract of any kind. This is a
+    completed negative result, not an unfinished probe.
+x-evidence:
+  fetched: '2026-08-04'
+  method: curl GET with 12s timeout against apex, www and Squarespace platform hosts
+  dns_method: dig +short A on candidate API/docs/app subdomains of both domains

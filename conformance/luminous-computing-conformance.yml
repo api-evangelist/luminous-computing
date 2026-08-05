@@ -1,0 +1,73 @@
+generated: '2026-08-04'
+method: derived
+source: >-
+  well-known/luminous-computing-well-known.yml probe results plus 2026-08-04 search of Luminous
+  Computing's public material (single-page marketing site, press coverage, funding announcements)
+scope: >-
+  Luminous Computing publishes no API, so there are no API or cross-cutting technical standards to
+  assert. The API/protocol standards below are recorded as applicable:false rather than as failed
+  checks, so this file is never mistaken for a compliance posture the company does not claim. No
+  `Compliance` pointer is wired in apis.yml.
+api_standards:
+- id: openapi
+  conforms: false
+  applicable: false
+  evidence: no public API contract published (see well-known/luminous-computing-well-known.yml)
+- id: asyncapi
+  conforms: false
+  applicable: false
+- id: graphql
+  conforms: false
+  applicable: false
+- id: oauth2
+  conforms: false
+  applicable: false
+- id: openid-connect
+  conforms: false
+  applicable: false
+- id: rfc9457-problem-details
+  conforms: false
+  applicable: false
+- id: mcp
+  conforms: false
+  applicable: false
+- id: a2a
+  conforms: false
+  applicable: false
+  evidence: >-
+    /.well-known/agent-card.json and /.well-known/agent.json both 404 on lmns.com and
+    luminous-co.squarespace.com
+- id: rfc9116-security-txt
+  conforms: false
+  applicable: true
+  evidence: /.well-known/security.txt returns 404 on every Luminous Computing host
+- id: llmstxt
+  conforms: false
+  applicable: true
+  evidence: /llms.txt returns 404 on every Luminous Computing host
+industry_standards:
+  note: >-
+    As a silicon-photonics chip and systems company, the standards Luminous would eventually be
+    measured against are hardware standards - foundry PDK/process rules, OIF and IEEE optical
+    interconnect specifications, CXL/PCIe host attachment, and packaging standards. Luminous has
+    published no conformance claim against any of them, and none is asserted here. Its product is
+    pre-commercial: first-generation photonic chips were being talked about publicly for the
+    2026-2027 window.
+information_security_compliance:
+  found: false
+  note: >-
+    No trust center, SOC 2, ISO 27001 or equivalent information-security certification page was
+    found by probe-security-programs.py (vdp=none trust=none) or by search. No `Compliance` and no
+    `TrustCenter` pointer is wired in apis.yml.
+vulnerability_disclosure:
+  found: false
+  note: >-
+    No security.txt, no /security, /responsible-disclosure or /vulnerability-disclosure page, and no
+    HackerOne/Bugcrowd/Intigriti program. No `Security` or `VulnerabilityDisclosure` pointer is
+    wired.
+domain_security_observed:
+  source: security/luminous-computing-domain-security.yml
+  summary: >-
+    lmns.com serves TLS 1.3 with HSTS (max-age 15552000) and has DNSSEC and SPF records present;
+    there is no CAA record and no DMARC record at all. The apex itself returns the Squarespace
+    "Website Expired" 404 page.
