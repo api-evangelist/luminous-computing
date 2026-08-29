@@ -20,6 +20,17 @@ description: >-
   and lmns.com DNS is still actively operated (Google Workspace mail, plus Atlassian, Smartsheet and
   DocuSign domain verifications), indicating a lapsed marketing-site subscription rather than a
   wound-down company.
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://images.squarespace-cdn.com/content/5e0fe731977d182367958f38/1583783373759-LKLMP60XORU67HPM6T3G/logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/luminous-computing/refs/heads/main/apis.yml
 x-type: company
