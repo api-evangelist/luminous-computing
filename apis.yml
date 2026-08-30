@@ -59,6 +59,11 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/nokia-corp/
+  name: Nokia
+  x-relationship: acquired
+  x-evidence: "Luminous emerged from stealth in March 2022 with a $105M Series A backed by Bill Gates, Gigafund, 8090 Partners, Neo, Third Kind Venture Capital, Alumni Ventures, Strawberry Creek Ventures, Horsley Bridge and Modern Venture Partners, bringi"
 - type: DomainSecurity
   url: security/luminous-computing-domain-security.yml
 - type: Conformance
