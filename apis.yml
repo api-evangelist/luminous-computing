@@ -31,6 +31,18 @@ deliveryModel:
   - none
   generated: '2026-08-28'
   method: derived
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - security
+  generated: '2026-09-02'
+  method: derived
 image: https://images.squarespace-cdn.com/content/5e0fe731977d182367958f38/1583783373759-LKLMP60XORU67HPM6T3G/logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/luminous-computing/refs/heads/main/apis.yml
 x-type: company
